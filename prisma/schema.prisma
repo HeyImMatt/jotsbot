@@ -18,5 +18,27 @@ model User {
 	status		  String?	@default("active")
 	createdAt     DateTime  @default(now()) @map(name: "created_at")
 	updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+	jots 		  Jot[]
 	@@map(name: "users")
+}
+
+model Jot {
+	id       	  Int  		@id @default(autoincrement())
+	text	 	  String?
+	createdAt     DateTime  @default(now()) @map(name: "created_at")
+	updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+	user   	 	  User 		@relation(fields: [userId], references: [id])
+	userId 	 	  Int
+	prompt   	  Prompt 	@relation(fields: [promptId], references: [id])
+	promptId 	  Int
+	@@map(name: "jots")
+}
+
+model Prompt {
+	id       	  Int  		@id @default(autoincrement())
+	text	 	  String?
+	createdAt     DateTime  @default(now()) @map(name: "created_at")
+	updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+	jots		  Jot[]
+	@@map(name: "prompts")
 }
