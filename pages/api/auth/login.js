@@ -17,7 +17,13 @@ export default async function handler(req, res) {
 		const pwMatch = await verifyPasswordHash(plainPw, user.password);
 
 		if (pwMatch) {
-			return res.status(200).json(user);
+			return res.status(200).json({
+				email: user.email,
+				id: user.id,
+				name: user.name,
+				status: user.status,
+				jots: user.jots,
+			});
 		}
 
 		return res.status(401).send('Authentication failed.');
