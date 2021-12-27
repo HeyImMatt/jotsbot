@@ -2,7 +2,7 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "indent": ["error", "tab"],
-    "max-len": ["error", 120, 4, {
+    "max-len": ["error", 115, 4, {
       "ignoreComments": true,
       "ignoreRegExpLiterals": true,
       "ignoreStrings": true,
@@ -19,6 +19,10 @@
     }],
     "operator-linebreak": ["error", "after"],
     "object-curly-spacing": ["error", "always"],
+    "semi": ["error", "always"],
+    "no-trailing-spaces": "error",
+    "no-console": ["warn", { "allow": ["error"] }],
+    "no-debugger": "error",
     "space-before-function-paren": ["error", {
       "anonymous": "never",
       "asyncArrow": "always",
